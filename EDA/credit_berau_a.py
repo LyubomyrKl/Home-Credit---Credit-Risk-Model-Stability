@@ -5,11 +5,11 @@ import datetime
 from scipy import stats
 
 df_train_credit_bureau_a_1 = scan_data_and_parse_dates(
-    '/kaggle/input/home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_1_*.parquet')
+    '../input/home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_1_*.parquet')
 credit_bureau_a_1 = df_train_credit_bureau_a_1.lazy().collect()
 
 credit_bureau_a_2 = scan_data_and_parse_dates(
-    '/kaggle/input/home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_2_*.parquet').lazy().collect()
+    '../home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_2_*.parquet').lazy().collect()
 cread_var = scan_data_and_parse_dates('/kaggle/working/bereau_a_2(1)_1.parquet').lazy().collect()
 
 
@@ -91,7 +91,7 @@ already_done = 0
 for i in range(11 - already_done):
     # Read and parse data
     credit_bureau_a_2 = scan_data_and_parse_dates(
-        f'/kaggle/input/home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_2_{i + already_done}.parquet').lazy().collect()
+        f'../home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_a_2_{i + already_done}.parquet').lazy().collect()
 
     # Group by 'case_id' and 'num_group1' and perform aggregations
     result_df = credit_bureau_a_2.group_by(['case_id', 'num_group1']).agg(
@@ -152,5 +152,5 @@ for i in range(11 - already_done):
     # Print progress
     print(f'{i + already_done}/10')
 
-credit_bureau_a_2 = scan_data_and_parse_dates('/kaggle/working/bereau_a_2_*.parquet').lazy().collect()
+credit_bureau_a_2 = scan_data_and_parse_dates('./bereau_a_2_*.parquet').lazy().collect()
 credit_bureau_a_2.write_parquet('bereau_a_2.parquet')

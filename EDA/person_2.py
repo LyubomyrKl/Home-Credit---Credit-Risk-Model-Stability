@@ -4,7 +4,7 @@ import polars as pl
 import numpy as np
 
 train_person_2 = scan_data_and_parse_dates(
-    '/kaggle/input/home-credit-credit-risk-model-stability/parquet_files/train/train_person_2.parquet').lazy().collect()
+    '../home-credit-credit-risk-model-stability/parquet_files/train/train_person_2.parquet').lazy().collect()
 
 
 def get_pmts_end_date(list_of_series):

@@ -3,7 +3,7 @@ import polars as pl
 import numpy as np
 
 credit_bureau_b_2 = scan_data_and_parse_dates(
-    '/kaggle/input/home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_b_2.parquet').lazy().collect()
+    '../home-credit-credit-risk-model-stability/parquet_files/train/train_credit_bureau_b_2.parquet').lazy().collect()
 
 
 def get_pmts_start_date(list_of_series):
